@@ -25,6 +25,12 @@ type Analysis struct {
 	Warnings                                              []string
 }
 
+type Quote struct {
+	IngredientCode string
+	Supplier       string
+	UnitPrice      int64
+}
+
 func (r Ration) Analyze() (Analysis, error) {
 	if r.Headcount <= 0 || len(r.Components) == 0 || r.TargetPerHeadKg <= 0 {
 		return Analysis{}, fmt.Errorf("%w: ration inputs", domain.ErrInvalid)
